@@ -1,0 +1,73 @@
+-- Active: 1721205229551@@127.0.0.1@3306
+DROP DATABASE IF EXISTS cultureVibe;
+    -- Création de la base de données
+CREATE DATABASE cultureVibe;
+
+-- Utilisation de la base de données
+USE cultureVibe;
+
+-- Création de la table Catégorie
+CREATE TABLE category (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL
+);
+
+-- Création de la table Loisir
+CREATE TABLE loisir (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titre VARCHAR(255) NOT NULL,
+    description TEXT,
+    date_publication DATE,
+    image VARCHAR(255), -- Colonne pour l'image
+    category_id INT,
+    FOREIGN KEY (category_id) REFERENCES category(id)
+);
+
+-- Création de la table Notation
+CREATE TABLE notation (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    loisir_id INT,
+    note INT CHECK (note >= 1 AND note <= 5),
+    date_notation DATE,
+    FOREIGN KEY (loisir_id) REFERENCES loisir(id)
+);
+
+-- Utilisation de la base de données
+USE cultureVibe;
+
+-- Insertion des données dans la table Catégorie
+INSERT INTO category (nom) VALUES
+('Littérature'),
+('Films'),
+('Séries');
+
+-- Insertion des données dans la table Loisir
+INSERT INTO loisir (titre, description, date_publication, image, category_id) VALUES
+('Harry Potter', 'A young wizard\'s journey', '1997-06-26', 'images/harry_potter.jpg', 1),
+('The Hobbit', 'A hobbit\'s adventure to reclaim a lost kingdom', '1937-09-21', 'images/the_hobbit.jpg', 1),
+('Inception', 'A thief who steals corporate secrets through dream-sharing technology', '2010-07-16', 'images/inception.jpg', 2),
+('The Matrix', 'A computer hacker learns about the true nature of reality', '1999-03-31', 'images/the_matrix.jpg', 2),
+('Breaking Bad', 'A high school chemistry teacher turned methamphetamine producer', '2008-01-20', 'images/breaking_bad.jpg', 3),
+('Stranger Things', 'A group of kids uncover supernatural occurrences in their town', '2016-07-15', 'images/stranger_things.jpg', 3),
+('The Witcher', 'A mutated monster-hunter for hire', '2019-12-20', 'images/the_witcher.jpg', 3),
+('1984', 'A dystopian novel set in a totalitarian society', '1949-06-08', 'images/1984.jpg', 1),
+('The Shawshank Redemption', 'Two imprisoned men bond over a number of years', '1994-09-22', 'images/shawshank_redemption.jpg', 2),
+('Game of Thrones', 'Noble families vie for control of the Iron Throne', '2011-04-17', 'images/game_of_thrones.jpg', 3);
+
+-- Insertion des données dans la table Notation
+INSERT INTO notation (loisir_id, note, date_notation) VALUES
+(1, 5,  '2023-01-10'),
+(1, 4,  '2023-02-15'),
+(2, 5,  '2023-03-20'),
+(3, 5,  '2023-04-25'),
+(3, 4,  '2023-05-30'),
+(4, 5, '2023-06-10'),
+(5, 5,  '2023-07-15'),
+(6, 4,  '2023-08-20'),
+(7, 4,  '2023-09-25'),
+(8, 5,  '2023-10-30'),
+(9, 5,  '2023-11-10'),
+(9, 4, '2023-12-15'),
+(10, 5,'2024-01-10'),
+(10, 4,  '2024-02-15'),
+(5, 5,  '2024-03-20');
