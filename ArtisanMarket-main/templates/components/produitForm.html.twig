@@ -1,0 +1,44 @@
+<form method="post" class="row g-3 container-sm" action="{{ path('app_produit_edit', {'id': produit.id}) }}" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to update this item?');">
+	<div class="col-md-6">
+		<label for="nom" class="form-label">Nom</label>
+		<input type="text" class="form-control" name="nom" value="{{produit.nom}}">
+	</div>
+	<div class="col-md-6">
+		<label for="categorie" class="form-label">Categorie</label>
+		<select class="form-select" name="categorie" aria-label="Default select example" value="{{produit.categorie.id}}">
+			<option selected disabled>Choix de la categorie</option>
+            {% if categories is not null  %}
+			{% for categorie in categories %}
+				<option value="{{categorie.id}}">{{categorie.nom}}</option>
+			{% endfor %}
+            {% endif %}
+		</select>
+	</div>
+	<div class="col-12">
+		<label for="description" class="form-label">Description</label>
+		<input type="text" class="form-control" id="" value="{{produit.description}}" name="description" placeholder="Description">
+	</div>
+	<div class="col-md-6">
+		<label for="prix" class="form-label">Prix</label>
+		<input type="number" class="form-control" value="{{produit.prix}}" name="prix">
+	</div>
+	<div class="col-md-2">
+		<label for="quantite" class="form-label">Quantite</label>
+		<input type="text" class="form-control" value="{{produit.quantite}}" name="quantite">
+	</div>
+	<div class="col-md-2">
+		<div class="form-check">
+			<input class="form-input" type="file" name="image" value="{{produit.image}}">
+		</div>
+	</div>
+	<div class="col-md-6">
+		<input type="hidden" name="_token" value="{{ csrf_token('edit' ~ produit.id) }}">
+		<button type="submit" class="btn btn-success">Sauvegarder</button>
+	</div>
+</form>
+<div class="d-flex">
+	<form method="post" class="ms-auto d-flex" action="{{ path('app_produit_delete', {'id': produit.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+		<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ produit.id) }}">
+		<button class="ms-auto btn btn-danger" type="button">Supprimer le produit</button>
+	</form>
+</div>

@@ -1,0 +1,82 @@
+<section class="ftco-section" style="height: 100%;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="table-wrap">
+					<button class="btn btn-success mb-2">
+						<a class="nav-link" href="{{ path('app_categorie_new') }}">
+							Créer
+							<i class="bi bi-plus-circle"></i>
+						</a>
+					</button>
+					<table class="table table-striped">
+						<thead class="table-secondary">
+							<tr>
+								<th>
+									Id
+								</th>
+								<th>
+									Nom
+								</th>
+								<th>
+									Description
+								</th>
+								<th>
+									Image
+								</th>
+								<th>
+									actions
+								</th>
+							</tr>
+						</thead>
+						<tbody class="table-group-divider">
+							{% for categorie in categories %}
+								{% if categorie is defined or categorie.nom is not null %}
+									<tr>
+										<td>
+											{{ categorie.id }}
+										</td>
+										<td>
+											{{ categorie.nom }}
+										</td>
+										<td>
+											{{ categorie.description }}
+										</td>
+										<td>
+											{% if categorie.image is not null %}
+												<img class="bd-placeholder-img" width="70" height="70" alt="" src="{{ asset('uploads/' ~ categorie.image)}}"></img>
+										{% else %}
+											<p>
+												pas d'image
+											</p>
+										{% endif %}
+										<td>
+											<button type="button" class="btn btn-outline-success me-2">
+												<a class="nav-link" href="{{ path('app_categorie_produit', {'id': categorie.id}) }}">
+													Voir
+													<i class="bi bi-eye"></i>
+												</a>
+											</button>
+											<button type="button" class="btn btn-info">
+												<a class="nav-link" href="{{ path('app_categorie_edit', {'id': categorie.id}) }}">
+													Editer
+													<i class="bi bi-pencil-square"></i>
+												</a>
+											</button>
+										</td>
+									</tr>
+								</td>
+							{% endif %}
+						{% else %}
+							<tr>
+								<td colspan="4">
+									Pas de Categories
+								</td>
+							</tr>
+						{% endfor %}
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>

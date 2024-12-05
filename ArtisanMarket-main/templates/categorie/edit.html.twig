@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Categorie
+{% endblock %}
+
+{% block body %}
+	<div class="container py-5 d-flex">
+		<div class="card w-100 p-4 me-5">
+			<h4>Modification produit</h4>
+			{{ include('categorie/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+			<span class="text-end">
+				{{ include('categorie/_delete_form.html.twig') }}
+			</span>
+		</div>
+		<div class="ms-auto">
+			<div class="text-center mb-4">
+				{% if categorie is not null or categorie is not defined %}
+					<img class="rounded-4" width="30%" src="{{ asset('uploads/' ~ categorie.image)}}" alt="...">
+				{% else %}
+					<span class="">
+						<i class="bi bi-basket3-fill fs-1"></i>
+					</span>
+				{% endif %}
+			</div>
+	
+			<div class="">
+				<p>Illustrez le charme unique de vos catégories artisanales en téléchargeant des images qui capturent l'essence de chaque métier. Des photos de haute résolution mettront en avant la qualité et l'authenticité de vos produits artisanaux, suscitant l'intérêt et l'admiration des clients. Assurez-vous de respecter les spécifications suivantes pour une intégration harmonieuse sur votre site :</p>
+				<ul>
+					<li>Format : JPG, PNG ou WEBP</li>
+					<li>Taille maximale : 1 Mo</li>
+					<li>Dimensions recommandées : 800x800 pixels pour une visualisation optimale</li>
+				</ul>
+				<p>Après le téléchargement, vous aurez la possibilité de prévisualiser et d'organiser les images. Les images que vous téléchargez ici apparaîtront dans la galerie d'images du produit sur votre page de vente.</p>
+			</div>
+		</div>
+
+	</div>
+
+
+	{# <a href="{{ path('app_categorie_index') }}">back to list</a> #}
+
+{% endblock %}

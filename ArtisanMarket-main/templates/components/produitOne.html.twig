@@ -1,0 +1,36 @@
+<section class="py-1">
+	<div class="container px-4 px-lg-5 my-5">
+		<div class="row gx-4 gx-lg-5 align-items-center">
+			<div class="col-md-6">
+				{% if produit.image is not defined or produit.image is null %}
+					<img src="{{ asset('uploads/images-Web/imageParDefault.png')}}" class="card-img-top mb-5 mb-md-0">
+				{% else %}
+					<img class="card-img-top mb-5 mb-md-0" src="{{ asset('uploads/' ~ produit.image)}}" alt="...">
+			{% endif %}
+			</div>
+			<div class="col-md-6">
+				<div class="small mb-1">SKU: BST-498</div>
+				<h1 class="display-5 fw-bolder">{{produit.nom}}</h1>
+				<div class="fs-5 mb-5">
+					<span class="text-decoration-line-through">{{produit.prix}}0 €</span>
+					<span>{{produit.prix}}
+						€</span>
+				</div>
+				<p class="lead">{{produit.description}}</p>
+				<div class="d-flex">
+					<input class="form-control text-center me-3" id="inputQuantity" type="text" readonly value="{{ produit.quantite }} Restant(s)" style="max-width: 3rem">
+					<button class="btn btn-outline-success flex-shrink-0" type="button">
+						{% if is_granted('ROLE_ADMIN') or  is_granted('ROLE_USER') %}
+							<a class="nav-link" href="{{ path('app_details_new', {'id': produit.id}) }}">
+								<i class="bi-cart-fill me-1"></i>
+								Ajouter</a>
+						{% else %}
+							<a class="nav-link" href="{{ path('app_login') }}">
+								<i class="bi-cart-fill me-1"></i>
+								Ajouter</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>

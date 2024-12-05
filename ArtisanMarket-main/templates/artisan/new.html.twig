@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Artisan{% endblock %}
+
+{% block body %}
+<div class="container py-5 d-flex">
+		<div class="card w-100 p-4 me-5">
+			<h4>Créer un artisan</h4>
+    {{ include('artisan/_form.html.twig') }}
+		</div>
+		<div class="ms-auto">
+			<div class="text-center mb-4">
+					<img class="rounded-4" width="30%" src="https://previews.123rf.com/images/goodstudio/goodstudio2212/goodstudio221200073/195101204-concepteurs-cr%C3%A9atifs-pendant-le-processus-de-conception-de-meubles-croquis-de-dessin-%C3%A9bauche-pour.jpg   " alt="...">
+			</div>
+
+			<div class="">
+				<p>Valorisez l'excellence et la passion des artisans de votre communauté en téléchargeant des images qui reflètent leur art et leur technique. Des photographies précises et esthétiques encourageront la curiosité et l'appréciation des visiteurs pour l'artisanat. Pour que ces images soient à la hauteur de leur art, veillez à ce qu'elles respectent les critères suivants :</p>
+				<ul>
+					<li>Format : JPG, PNG ou WEBP</li>
+					<li>Taille maximale : 1 Mo</li>
+					<li>Dimensions recommandées : 800x800 pixels pour une visualisation optimale</li>
+				</ul>
+				<p>Après le téléchargement, vous aurez la possibilité de prévisualiser et d'organiser les images. Les images que vous téléchargez ici apparaîtront dans la galerie d'images du produit sur votre page de vente.</p>
+			</div>
+		</div>
+
+	</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Details{% endblock %}
+
+{% block body %}
+<div class="container py-5 d-flex">
+		<div class="card w-100 p-4 me-5">
+			<h4>Modification du detail</h4>
+			{{ include('details/_form.html.twig') }}
+		</div>
+		<div class="ms-auto">
+			<div class="text-center mb-4">
+                <img class="rounded-4" width="30%" src="https://static.vecteezy.com/ti/vecteur-libre/p1/17052548-icone-de-couleur-rvb-de-presentation-du-cout-du-produit-rapport-de-commercialisation-orateur-performant-commerce-de-detail-illustrationle-isolee-dessin-au-trait-rempli-simple-trait-modifiable-vectoriel.jpg" alt="...">
+			</div>
+			<div class="">
+				<p>Les détails font toute la différence. Présentez la finesse et la précision de l'artisanat grâce à des images qui mettent en valeur les traits caractéristiques de chaque création. Des visuels détaillés et de qualité inciteront à l'appréciation et à la valorisation du travail manuel. Pour une intégration parfaite sur ArtisanMarket, vos images devront répondre aux exigences suivantes</p>
+			</div>
+		</div>
+	</div>
+
+    {# <a href="{{ path('app_details_index') }}">back to list</a> #}
+{% endblock %}

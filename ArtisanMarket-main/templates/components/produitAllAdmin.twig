@@ -1,0 +1,63 @@
+<section class="ftco-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="table-wrap">
+					<button class="btn btn-success mb-2">
+						<a class="nav-link"href="{{ path('app_produit_new') }}">Créer <i class="bi bi-plus-circle"></i></a>
+					</button>
+	
+					<table class="table table-striped">
+						<thead class="table-secondary">
+							<tr>
+								<th>Id</th>
+								<th>Nom</th>
+								<th>Description</th>
+								<th>Prix</th>
+								<th>Quantite</th>
+                              
+                                <th>Image</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody class="table-group-divider">
+						
+							{% for produit in produits %}
+								{% if produit is defined or produit.nom is not null %}
+									<tr>
+										<td>{{ produit.id }}</td>
+										<td>{{ produit.nom }}</td>
+										<td>{{ produit.description }}</td>
+										<td>{{ produit.prix }}</td>
+										<td>{{ produit.quantite }}</td>
+										
+										
+										<td>{% if produit.image is not null %}
+										<img class="bd-placeholder-img" width="60" height="60" alt="" src="{{ asset('uploads/' ~ produit.image)}}"></td>
+										{% else %}
+										<p> pas d'image </p>
+										{% endif %}
+										<td>
+											<button type="button" class="btn btn-outline-success me-2">
+												<a class="nav-link" href="{{ path('app_produit_show', {'id': produit.id}) }}">Voir <i class="bi bi-eye"></i></a>
+											</button>
+
+											<button type="button" class="btn btn-info">
+												<a class="nav-link" href="{{ path('app_produit_edit', {'id': produit.id}) }}">Editer <i class="bi bi-pencil-square"></i></a>
+											</button>
+										</td>
+									</tr>
+								{% endif %}
+							{% else %}
+								<tr>
+									<td colspan="4">Pas de Produits</td>
+								</tr>
+							{% endfor %}
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

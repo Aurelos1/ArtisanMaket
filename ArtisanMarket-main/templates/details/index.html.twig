@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Details index
+{% endblock %}
+
+{% block body %}
+<div class="vh-150">
+	{% if is_granted('ROLE_ADMIN') %}
+		{{ include ('components/detailsAllAdmin.html.twig',{'produits':produits, 'details':details, 'detailsAdmin':detailsAdmin})  }}
+	{% elseif is_granted('ROLE_USER') %}
+		{{ include ('components/detailsAll.html.twig',{'produits':produits, 'details':details})}}
+	{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit
+{% endblock %}
+
+{% block body %}
+	{# <h1>Produit</h1>
+	
+	    <table class="table">
+	        <tbody>
+	            <tr>
+	                <th>Id</th>
+	                <td>{{ produit.id }}</td>
+	            </tr>
+	            <tr>
+	                <th>Nom</th>
+	                <td>{{ produit.nom }}</td>
+	            </tr>
+	            <tr>
+	                <th>Description</th>
+	                <td>{{ produit.description }}</td>
+	            </tr>
+	            <tr>
+	                <th>Prix</th>
+	                <td>{{ produit.prix }}</td>
+	            </tr>
+	            <tr>
+	                <th>Quantite</th>
+	                <td>{{ produit.quantite }}</td>
+	            </tr>
+	            <tr>
+	                <th>Image</th>
+	            <td><img src="{{ asset('uploads/'~ produit.image)}}" style="witdh:100px;"></td>
+	            </tr>
+	
+	        </tbody>
+	    </table>
+	
+	    <a href="{{ path('app_produit_index') }}">back to list</a>
+	
+	    <a href="{{ path('app_produit_edit', {'id': produit.id}) }}">edit</a>
+	
+	    {{ include('produit/_delete_form.html.twig') }} #}
+	{% if is_granted('ROLE_ADMIN') %}
+	{{ include ('components/produitOne.html.twig',{'produits':produit})  }}
+		<section class="py-5 bg-light">
+			<div class="container px-4 px-lg-5 mt-5">
+				<h2 class="fw-bolder mb-4">Produits recents</h2>
+				
+				{{ include ('components/produitAll.html.twig',{'produits':produits|slice(0, 4)})  }}
+			</div>
+	{% else %}
+			{{ include ('components/produitOne.html.twig',{'produits':produit})  }}
+		<section class="py-5 bg-light">
+			<div class="container px-4 px-lg-5 mt-5">
+				<h2 class="fw-bolder mb-4">Produits recents</h2>
+				{{ include ('components/produitAll.html.twig',{'produits':produits|slice(0, 4)})  }}
+			</div>
+	{% endif %}
+		
+			
+	{% endblock %}

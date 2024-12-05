@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+{% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5 ">
+      <div class="col-lg-7 text-center text-lg-start" >
+        <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Bienvenue sur ArtisanMarket. </h1>   
+    <p></p>
+      </div>
+      <div class="col-md-10 mx-auto col-lg-5  ">
+        
+        <form class="p-4 p-md-5 border rounded-3 bg-dark" method="post">
+          <div class="form-floating mb-3 " >
+            <input autocomplete="email" type="email" id="inputEmail" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
+            <label for="inputEmail" value="{{ last_username }}" >Email address</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password">
+            <label for="inputPassword ">Password</label>
+          </div>
+          <div>
+           <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}">   </div>
+          <div class="checkbox mb-3">
+            <label class="text-white">
+              <input  type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
+          <button class="w-100 btn btn-lg btn-success" type="submit">
+          Sign up
+          </button>
+          <hr class="my-4">
+           <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label text-white" for="flexCheckDefault">
+            By clicking Sign up, you agree to the terms of use.
+             </label>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

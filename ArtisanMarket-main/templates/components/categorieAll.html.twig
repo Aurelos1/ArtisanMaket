@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-center">
+	<p class=" border-bottom">Catégories :</p>
+	<div class="d-flex ms-3 gap-2 justify-content-center">
+		{% for categorie in categories|slice(0, 7) %}
+			<span class="badge d-flex align-items-center p-1 pe-2 text-primary-emphasis bg-success-subtle border border-success-subtle rounded-pill">
+				<a class="nav-link" href="{{ path('app_categorie_produit', {'id': categorie.id}) }}">
+					{% if categorie.image is not defined or categorie.image is null %}
+						<img src="{{ asset('uploads/images-Web/imageParDefault.png')}}"width="24" height="24" alt="" class="img-responsive featurette-image img-fluid mx-auto rounded-5">
+					{% else %}
+						<img src="{{ asset('uploads/' ~ categorie.image)}}" width="24" height="24" alt="" class="img-responsive featurette-image img-fluid mx-auto rounded-5">
+					{% endif %}
+					{{ categorie.nom }}</a>
+			</span>
+			{% else %}
+		{% endfor %}
+	</div>
+</div>

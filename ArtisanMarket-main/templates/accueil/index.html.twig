@@ -1,0 +1,167 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<div class="p-4 d-flex p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+			<div class="col-lg-6 px-0">
+				<h1 class="display-5 fst-italic">{{ 'categorie.titre2' |trans}}</h1>
+				<p class="lead my-3">{{ 'categorie.selection' |trans}}</p>
+				<p class="lead mb-0">
+					<a href="{{ path('app_categorie_index')}}" class="text-body-emphasis fw-bold">{{ 'categorie.explore' |trans}}</a>
+				</p>
+			</div>
+			<div class="ms-auto">
+			<img src="{{ asset('uploads/images-Web/logo.png')}}" width="300" height="300" alt="" class="img-responsive featurette-image img-fluid mx-auto">
+			</div>
+		</div>
+
+		<div class="row mb-2">
+			{% for categorie in categories|slice(0, 2) %}
+				<div class="col-md-6">
+					<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="height: 80%">
+						<div class="col h-100 p-4 d-flex flex-column position-static">
+							<strong class="d-inline-block mb-2 text-primary-emphasis">{{ 'categorie.titre' |trans}}</strong>
+							<h3 class="mb-2">{{categorie.nom}}</h3>
+							<p class="card-text mb-auto">{{categorie.description}}</p>
+							<button type="button" class="w-50 btn btn-success ">
+								<a href="{{ path('app_categorie_produit', {'id': categorie.id}) }}" class="p-0 nav-link">
+									{{ 'categorie.see' |trans}}
+								</a>
+							</button>
+						</div>
+						<div class="col-auto d-none d-lg-block">
+								{% if categorie.image is not defined or categorie.image is null %}
+										<img src="{{ asset('uploads/images-Web/imageParDefault.png')}}" width="200" height="250" alt="" class="img-responsive featurette-image img-fluid mx-auto">
+								{% else %}
+										<img src="{{ asset('uploads/' ~ categorie.image)}}" width="200" height="250" alt="" class="img-responsive featurette-image img-fluid mx-auto">
+								{% endif %}
+							</svg>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+		<div class="row g-5">
+			<div class="col-md-8">
+				<h3 class="pb-4 mb-4 fst-italic border-bottom">
+						{{ 'categorie.nouvelle' |trans}}
+				</h3>
+
+				<article class="blog-post">
+					<h3 class="display-5 link-body-emphasis mb-1">
+						{{ 'categorie.artisanat' |trans}}</h3>
+					<p class="blog-post-meta">
+					</p>
+
+					<p>{{ 'categorie.decouvrer' |trans}}
+					</p>
+					<hr>
+					<p>{{ 'categorie.processus' |trans}}</p>
+					<h2>{{ 'categorie.artisant' |trans}}</h2>
+					<p>{{ 'categorie.partager' |trans}}</p>
+					<blockquote class="blockquote">
+						<p>{{ 'categorie.creation' |trans}}</p>
+					</blockquote>
+
+					<p>{{ 'categorie.mission' |trans}}</p>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>{{ 'categorie.pays' |trans}}</th>
+								<th>{{ 'categorie.fabrique' |trans}}</th>
+								<th>{{ 'categorie.vendu' |trans}}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{{ 'categorie.paysFr' |trans}}</td>
+								<td>10</td>
+								<td>11</td>
+							</tr>
+							<tr>
+								<td>{{ 'categorie.paysUs' |trans}}</td>
+								<td>4</td>
+								<td>3</td>
+							</tr>
+							<tr>
+								<td>{{ 'categorie.paysBg' |trans}}</td>
+								<td>7</td>
+								<td>9</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>{{ 'categorie.total' |trans}}</th>
+								<td>21</td>
+								<td>23</td>
+							</tr>
+						</tfoot>
+					</table>
+
+					<p>{{ 'categorie.tendance' |trans}}</p>
+				</article>
+
+				<article class="blog-post">
+					<h2 class="display-5 link-body-emphasis mb-1">{{ 'categorie.innovation' |trans}}</h2>
+					<p class="blog-post-meta">14 décembre 2020 par Artisan
+						<a href="#">Christophe</a>
+					</p>
+
+					<p>{{ 'categorie.fonctionnalite' |trans}}</p>
+					<ul>
+						<li>{{ 'categorie.article' |trans}}</li>
+						<li>{{ 'categorie.portrait' |trans}}</li>
+						<li>{{ 'categorie.focus' |trans}}</li>
+					</ul>
+					<p>{{ 'categorie.connectes' |trans}}</p>
+				</article>
+
+			</div>
+
+			<div class="col-md-4">
+				<div class="position-sticky" style="top: 2rem;">
+					<div class="p-4 mb-3 bg-body-tertiary rounded">
+						<h4 class="fst-italic">{{ 'categorie.about' |trans}}</h4>
+						<p class="mb-0">{{ 'categorie.customize' |trans}}</p>
+					</div>
+
+					<div>
+						<h4 class="fst-italic">{{ 'categorie.posts' |trans}}</h4>
+						<ul class="list-unstyled">
+							{% for produit in produits|slice(0, 3) %}
+								<li>
+									<a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="{{ path('app_produit_show', {'id': produit.id}) }}">
+										<svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveaspectratio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+										<div class="col-lg-8">
+											<h6 class="mb-0">{{ produit.nom }}</h6>
+											<small class="text-body-secondary">{{ produit.description }}</small>
+										</div>
+									</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+
+					<div class="p-4">
+						<h4 class="fst-italic">{{ 'categorie.artisants2' |trans}}</h4>
+						<ol class="list-unstyled mb-0">
+							{% for artisan in artisans %}
+								<li>
+									<a href="{{ path('app_artisan_show', {'id': artisan.id}) }}">{{artisan.nom}}</a>
+								</li>
+							{% else %}
+								<li>{{ 'categorie.noartisant' |trans}}</li>
+							{% endfor %}
+						</ol>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</main>
+{% endblock %}

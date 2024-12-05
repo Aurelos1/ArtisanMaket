@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+{# <td>{{ produit.id }}</td> #}
+	<div class="text-center">
+		<div class=" px-4 py-5" id="hanging-icons">
+			{{include ('components/categorieAll.html.twig',{'categories':categories})}}
+			<hr>    
+            {{ include ('components/produitAll.html.twig',{'produits':produits})  }}
+           {# <a href="{{ path('app_produit_new') }}">Create new</a> #}
+        </div>
+    </div>
+{% endblock %}

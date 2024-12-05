@@ -1,0 +1,83 @@
+<section class="ftco-section py-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="table-wrap">
+					<button class="btn btn-success mb-2">
+						<a class="nav-link" href="{{ path('app_artisan_new') }}">
+							Créer
+							<i class="bi bi-plus-circle"></i>
+						</a>
+					</button>
+					<table class="table table-striped">
+						<thead class="table-secondary">
+							<tr>
+								<th>
+									Id
+								</th>
+								<th>
+									Nom
+								</th>
+								<th>
+									Description
+								</th>
+								<th>
+									Adresse
+								</th>
+								<th>
+									Numéro de téléphone
+								</th>
+								<th>
+									Action
+								</th>
+							</tr>
+						</thead>
+						<tbody class="table-group-divider">
+							{% for artisan in artisans %}
+								{% if artisan is defined or artisan.nom is not null %}
+									<tr>
+										<td>
+											{{ artisan.id }}
+										</td>
+										<td>
+											{{ artisan.nom }}
+										</td>
+										<td>
+											{{ artisan.description }}
+										</td>
+										<td>
+											{{artisan.adresse}}
+										</td>
+										<td>
+											{{artisan.numero}}
+										</td>
+										<td>
+											<button type="button" class="btn btn-outline-success me-2">
+												<a class="nav-link" href="{{ path('app_artisan_show', {'id': artisan.id}) }}">
+													Voir
+													<i class="bi bi-eye"></i>
+												</a>
+											</button>
+											<button type="button" class="btn btn-info">
+												<a class="nav-link" href="{{ path('app_artisan_edit', {'id': artisan.id}) }}">
+													Editer
+													<i class="bi bi-pencil-square"></i>
+												</a>
+											</button>
+										</td>
+									</tr>
+								</td>
+							{% endif %}
+						{% else %}
+							<tr>
+								<td colspan="4">
+									Pas d'artisans
+								</td>
+							</tr>
+						{% endfor %}
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>

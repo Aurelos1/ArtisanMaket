@@ -1,0 +1,65 @@
+<header class="p-3 text-bg-dark">
+	<div class="container">
+		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+			<a href="{{ path('app_accueil') }} " class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+				<i class="bi bi-flower1 fs-1 text-success"></i>
+			</a>
+
+			<ul class="ms-4 nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+				<li>
+					<a href="{{ path('app_accueil') }} " class="nav-link px-2 text-white">Accueil</a>
+				</li>
+				<li>
+					<a href="{{ path('app_artisan_index') }} " class="nav-link px-2 text-white">Artisan</a>
+				</li>
+				<li>
+					<a href="{{ path('app_categorie_index') }} " class="nav-link px-2 text-white">Produits</a>
+				</li>
+
+				{% if is_granted('ROLE_ADMIN') %}
+					<li>
+						<a href="{{ path('app_commande_index') }}" class="nav-link px-2 text-white">Commande</a>
+					</li>
+				{% endif %}
+			</ul>
+
+			<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+				<input type="search" class="form-control form-control-dark text-bg-white" placeholder="Recherche..." aria-label="Search">
+			</form>
+
+			<div class="text-end">
+				{% if is_granted('ROLE_USER') %}
+					<div class="dropdown">
+						<button class="btn btn-success rounded-5 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{ app.user.nom|slice(0,1) }}{{ app.user.prenom|slice(0,1)}}</button>
+						<ul class="dropdown-menu">
+							<li>
+								<a class="dropdown-item" href="{{ path('app_user_edit', {'id': app.user.id}) }}">Profil <i class="bi bi-person"></i></a>
+							</li>
+							<li>
+								<a class="dropdown-item text-danger" href="{{ path('app_logout') }} ">Deconnexion <i class="bi bi-box-arrow-right"></i></a>
+							</li>
+						</ul>
+					</div>
+				{% else %}
+					<button type="button" class="btn btn-outline-light me-2">
+						<a class=" nav-link" href="{{ path('app_login') }} ">Connexion</a>
+					</button>
+					<button type="button" class="btn btn-success">
+						<a class="nav-link" href="{{ path('app_register') }} ">Inscription</a>
+					</button>
+				{% endif %}
+			</div>
+			{% if is_granted('ROLE_USER') %}
+
+				<button type="button" class="ms-3 btn btn-outline-success position-relative">
+
+                   
+
+                    <a href="{{ path('app_details_index') }}" class="nav-link">
+                        <i class="bi bi-basket2 "></i>
+                    </a>
+                </button>
+			{% endif %}
+		</div>
+	</div>
+</header>

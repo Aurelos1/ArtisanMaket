@@ -1,0 +1,97 @@
+<div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		</div>
+		<div class="carousel-inner" style="height:60vh">
+			<div class="carousel-item active">
+				<img src="{{ asset('uploads/images-Web/carousel.png')}}" width="100%" height="100%" alt="">
+			</div>
+			<div class="carousel-item">
+				<img src="{{ asset('uploads/images-Web/carousel-2.jpg')}}" width="100%" height="100%" alt="">
+			</div>
+			<div class="carousel-item">
+				<img src="{{ asset('uploads/images-Web/carousel-3.png')}}" width="100%" height="100%" alt="">
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</div>
+
+	<div class="container my-5">
+		<div class="row">
+			{% for artisan in artisans|slice(0,4) %}
+
+				<div class="col-lg-3 text-center">
+					<i class="bi bi-person-vcard rounded-circle fs-2"></i>
+					<h4 class="fw-normal">{{artisan.nom}}</h4>
+					<p class="h-25">{{artisan.description}}</p>
+					<p>
+						<a class="btn btn-success" href="{{ path('app_artisan_show', {'id': artisan.id}) }}">Détails &raquo;</a>
+					</p>
+				</div>
+			{% else %}
+				<p class="text-center">Pas d'artisan(s)</p>
+			{% endfor %}
+
+		</div>
+		<div class="text-center my-5">
+			<button type="button" class="btn btn-outline-success">
+				<a href="" class="nav-link">
+					Voir plus</a>
+			</button>
+			{# <button type="button" class="btn btn-outline-primary"><a href="" class="nav-link"> Ajouter</a></button> #}
+		</div>
+	</div>
+
+	<!-- COMPOSANT BSET -->
+
+	<hr class="featurette-divider">
+	<div class="container py-5">
+		<div class="row ">
+			<div class="col-md-7">
+				<h2 class="featurette-heading fw-normal lh-1">L'Art de la
+					<span class="text-body-secondary">It’llMenuiserie.</span>
+				</h2>
+				<p class="lead">Découvrez la précision et la créativité de nos menuisiers. Chaque coup de ciseau sculpte non seulement le bois, mais également l'histoire de créations uniques et intemporelles.</p>
+			</div>
+			<div class="col-md-5">
+				<img src="{{ asset('uploads/images-Web/best-ARTISAN.png')}}" width="400" height="400" alt="" class="img-responsive featurette-image img-fluid mx-auto">
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+			<div class="col-md-7 order-md-2">
+				<h2 class="featurette-heading fw-normal lh-1">La Beauté du Tissage à la
+					<span class="text-body-secondary">Main.</span>
+				</h2>
+				<p class="lead">Plongez dans l'univers du tissage traditionnel avec nos artisans. Chaque panier est tissé avec soin, reflétant un savoir-faire transmis de génération en génération.</p>
+			</div>
+			<div class="col-md-5 order-md-1">
+				<img src="{{ asset('uploads/images-Web/best-ARTISAN-2.png')}}" width="400" height="400" alt="" class="img-responsive featurette-image img-fluid mx-auto">
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+			<div class="col-md-7">
+				<h2 class="featurette-heading fw-normal lh-1">Un Sourire qui Raconte une
+					<span class="text-body-secondary">Histoire.</span>
+				</h2>
+				<p class="lead">Rencontrez les visages joyeux derrière chaque œuvre textile. Nos artisans, passionnés et dévoués, transforment des fils colorés en pièces magnifiques et vivantes.</p>
+			</div>
+			<div class="col-md-5">
+				<img src="{{ asset('uploads/images-Web/best-ARTISAN-3.png')}}" width="400" height="400" alt="" class="img-responsive featurette-image img-fluid mx-auto">
+			</div>
+		</div>
+	</div>

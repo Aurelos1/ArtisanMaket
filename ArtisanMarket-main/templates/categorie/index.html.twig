@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorie
+{% endblock %}
+
+{% block body %}
+	<div class="text-center vh-150">
+		<div class=" px-4 py-5" id="hanging-icons">
+			{% if is_granted('ROLE_ADMIN') %}
+
+				<div class="accordion" id="accordionPanelsStayOpenExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+								Categories
+							</button>
+						</h2>
+						<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+							<div class="accordion-body">
+								{{include ('components/categorieAllAdmin.html.twig',{'categories':categories})}}
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+								Produits
+							</button>
+						</h2>
+						<div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+							<div class="accordion-body">
+								{{ include ('components/produitAllAdmin.twig',{'produits':produits})  }}
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			{% else %}
+			
+				{{include ('components/categorieAll.html.twig',{'categories':categories})}}
+				<hr>
+				{{ include ('components/produitAll.html.twig',{'produits':produits})  }}
+
+			{% endif %}
+		</div>
+	</div>
+
+{% endblock %}

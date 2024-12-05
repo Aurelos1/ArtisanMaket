@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande index
+{% endblock %}
+
+{% block body %}
+	<section class="ftco-section py-5 vh-100">
+		<div class="container vh-70">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<button class="btn btn-success mb-2">
+							<a class="nav-link" href="{{ path('app_commande_new') }}">
+								Créer
+								<i class="bi bi-plus-circle"></i>
+							</a>
+						</button>
+						<table class="table table-striped">
+							<thead class="table-secondary">
+								<tr>
+									<th>Id</th>
+									<th>Date</th>
+									<th>Total</th>
+									<th>Statut</th>
+									<th>
+										Action
+									</th>
+								</tr>
+							</thead>
+							<tbody class="table-group-divider">
+								{% for commande in commandes %}
+									{% if commande is defined or commande.user.id is not null %}
+										<tr>
+											<td>{{ commande.id }}</td>
+											<td>{{ commande.date ? commande.date|date('Y-m-d') : '' }}</td>
+											<td>{{ commande.total }}</td>
+											<td>{{ commande.statut }}</td>
+											<td>
+												<button type="button" class="btn btn-info">
+													<a class="nav-link" href="{{ path('app_commande_edit', {'id': commande.id}) }}">
+														Editer
+														<i class="bi bi-pencil-square"></i>
+													</a>
+												</button>
+											</td>
+										</tr>
+									</td>
+								{% endif %}
+							{% else %}
+								<tr>
+									<td colspan="4">
+										Pas de commande
+									</td>
+								</tr>
+							{% endfor %}
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+	{# <a href="{{ path('app_details_show', {'id': commande.id}) }}">Details</a> #}
+{% endblock %}

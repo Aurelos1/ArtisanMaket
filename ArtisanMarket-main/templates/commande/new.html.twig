@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Commande
+{% endblock %}
+
+{% block body %}
+	<div class="container py-5 d-flex">
+		<div class="card w-100 p-4 me-5">
+			<h4>Créer commande</h4>
+			{{ include('commande/_form.html.twig') }}
+		</div>
+		<div class="ms-auto">
+			<div class="text-center mb-4">
+				<div class="text-center mb-4">
+					<img class="rounded-4" width="30%" src="https://media.cloture-electrique.expert/fr/images/guide-image-max-packages.jpg" alt="...">
+				</div>
+			</div>
+			<div class="">
+				<p>Capturez la confiance et la satisfaction des clients dans le processus de commande avec des images qui racontent une histoire d'engagement et de soin. Des visuels clairs et attrayants aideront à guider vos clients à travers les étapes de commande sur ArtisanMarket. Pour que ces images renforcent l'expérience utilisateur, assurez-vous qu'elles adhèrent aux normes suivantes :</p>
+			</div>
+		</div>
+	</div>
+
+	{# <a href="{{ path('app_commande_index') }}">back to list</a> #}
+{% endblock %}

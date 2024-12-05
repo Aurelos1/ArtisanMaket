@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Artisan{% endblock %}
+
+{% block body %}
+  {% if is_granted('ROLE_ADMIN') %}
+	{{ include ('components/artisanOne.html.twig', {'artisan': artisan})  }}
+
+	{% else %}
+	{{ include ('components/artisanOne.html.twig', {'artisan': artisan})  }}
+		
+	{% endif %}
+     
+    
+
+   
+{% endblock %}
