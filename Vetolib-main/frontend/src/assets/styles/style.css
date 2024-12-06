@@ -1,0 +1,59 @@
+.btn-success {
+  background-color: #1B8B5D !important;
+  border-color: #1B8B5D !important;
+  color: white !important;
+}
+
+.btn-outline-success {
+  color: #1B8B5D !important;
+  border-color: #1B8B5D !important;
+}
+
+.btn-outline-success:hover {
+  background-color: #1B8B5D !important;
+  color: white !important;
+}
+
+.btn-outline-success:active {
+  background-color: #1B8B5D !important;
+  color: white !important;
+}
+
+.btn-outline-success:focus {
+  background-color: #1B8B5D !important;
+  color: white !important;
+}
+
+.btn-primary {
+  background-color: #024476 !important;
+  border-color: #024476 !important;
+  color: white !important;
+}
+
+.btn-outline-primary {
+  color: #024476 !important;
+  border-color: #024476 !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: #024476 !important;
+  color: white !important;
+}
+
+.btn-outline-primary:active {
+  background-color: #024476 !important;
+  color: white !important;
+}
+
+.btn-outline-primary:focus {
+  background-color: #024476 !important;
+  color: white !important;
+}
+
+.text-primary {
+  color: #024476 !important;
+}
+
+.bg-primary {
+  background-color: #024476 !important;
+}/*# sourceMappingURL=style.css.map */
